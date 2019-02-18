@@ -1,20 +1,33 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import './App.css';
-import Login from './views/Login';
-import Signup from './views/Signup';
-import Country from './views/Country';
+import Map from './views/Map';
 
 class App extends Component {
+
+  constructor(){
+    super();
+    this.state = {
+      center: {}, 
+      zoom: 16
+    }
+  }
+
+  componentDidMount() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.setState({
+          center: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          }
+        });
+      });
+    }
+  }
+
   render() {
     return (
-      <Router>
-        <Switch>
-        <Route exact path="/" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/country" component={Country} />
-        </Switch>
-      </Router>
+      <Map center={ this.state.center } zoom={ this.state.zoom }/>
     );
   }
 }
