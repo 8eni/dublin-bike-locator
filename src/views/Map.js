@@ -64,8 +64,8 @@ class Map extends Component {
           item.distance = this.distance(
             this.props.center.lat,
             this.props.center.lng,
-            item.position.lat, item.position.lng, 'K');
-            return item.toFixed(2);
+            item.position.lat, item.position.lng, 'K').toFixed(2);
+            return item;
         })
         this.setState({ 
           stations: result,
@@ -78,7 +78,7 @@ class Map extends Component {
     const { center, zoom } = this.props
     if (Object.keys(center).length && this.state.stations.length) {
       return (
-        <div style={{ height: '100vh', width: '80%' }}>
+        <div style={{ height: '100vh', width: '100%' }}>
           <StationDetails
             stationDetails={ this.state.station } />
           <GoogleMapReact
