@@ -4,8 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import PersonPinCircleIcon from '@material-ui/icons/PersonPinCircle';
+import NearMeIcon from '@material-ui/icons/NearMe';
 
 const styles = {
   root: {
@@ -37,8 +37,8 @@ class BottomNav extends React.Component {
         className={classes.root}
       >
         <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+        <BottomNavigationAction label="Nearby" icon={<PersonPinCircleIcon />} />
+        <BottomNavigationAction label="Nearby" icon={<NearMeIcon />} />
       </BottomNavigation>
     );
   }

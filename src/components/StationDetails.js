@@ -1,29 +1,17 @@
-// import React from 'react';
-// import Button from '@material-ui/core/Button';
-
-// const StationDetails = ({ stationDetails }) => (stationDetails) ?
-  // <div>
-  //   { stationDetails.name } Stands - { stationDetails.available_bikes } 
-  //   Bikes - { stationDetails.available_bike_stands } - { stationDetails.distance }
-  //   <Button variant="contained" color="primary">
-  //     Hello Worlds
-  //   </Button>
-  // </div> :
-//   <div>none</div>
-
-// export default StationDetails;
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
+import Badge from '@material-ui/core/Badge';
+import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
+import LocalParkingIcon from '@material-ui/icons/LocalParking';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
+    marginBottom: theme.spacing.unit * 2,
   },
   paper: {
     padding: theme.spacing.unit * 2,
@@ -57,12 +45,22 @@ function StationDetails(props) {
             <Grid item xs container direction="column" spacing={16}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1">{ stationDetails.address }</Typography>
-                <Typography gutterBottom>{ stationDetails.last_update}</Typography>
-                <Typography color="textSecondary">BIKES: { stationDetails.available_bikes } | SPACES: { stationDetails.available_bike_stands }</Typography>
+                <Badge className={classes.margin} badgeContent={stationDetails.available_bike_stands} color="primary">
+                  <LocalParkingIcon />
+                </Badge>
+                <Badge className={classes.margin} badgeContent={stationDetails.available_bikes} color="secondary">
+                  <DirectionsBikeIcon />
+                </Badge>
+                {/* <Typography gutterBottom>{ stationDetails.last_update}</Typography> */}
+                {/* <Typography color="textSecondary">BIKES: { stationDetails.available_bikes } | SPACES: { stationDetails.available_bike_stands }</Typography> */}
+              </Grid>
+              <Grid item>
+                <Typography style={{ cursor: 'pointer' }}>Show on map</Typography>
               </Grid>
             </Grid>
+
             <Grid item>
-              <Typography variant="subtitle1">{ stationDetails.distance }Km</Typography>
+              <Typography variant="h6">{ stationDetails.distance } km</Typography>
             </Grid>
           </Grid>
         </Grid>

@@ -101,12 +101,6 @@ class App extends Component {
             <StationDetails
             key={ i }
             stationDetails={ station } />
-            // <Marker
-            //   key={ i }
-            //   viewStation={ this.updateStation }
-            //   lat={ station.position.lat }
-            //   lng={ station.position.lng }
-            //   station={ station } />
           )}
           {/* <Map stations={ this.state.stations } center={ this.state.center } zoom={ this.state.zoom }/> */}
           <BottomNav />
