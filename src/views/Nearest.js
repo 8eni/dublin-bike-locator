@@ -1,5 +1,12 @@
 import React from 'react';
 
-const Nearest = () => <h1>Nearest</h1>
+import StationDetails from '../components/StationDetails';
+
+const Nearest = ({ stations }) => 
+  ( stations.map((station, i) =>
+      <StationDetails
+        key={ i }
+        stationDetails={ station } />)
+  )
 
 export default Nearest;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 import GoogleMapReact from 'google-map-react';
 
 import { environment } from '../environment/environment';
@@ -22,7 +21,6 @@ class Map extends Component {
 
   componentDidMount() {
     console.log(this.props);
-    
     // this.getClosest(this.props.stations)
   }
 

@@ -102,7 +102,7 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={(props) => <Recent {...props} bool={ true } />} />
+              render={(props) => <Recent {...props} />} />
             <Route
               path="/map"
               render={(props) => <Map {...props}
@@ -110,7 +110,11 @@ class App extends Component {
                 center={ this.state.center }
                 zoom={ this.state.zoom }
               />} />
-            <Route exact path="/nearest" component={Nearest} />
+            <Route
+              path="/nearest"
+              render={(props) => <Nearest {...props}
+                stations={ this.state.stations }
+              />} />
               <BottomNav />
           </div>
         </Router>   
@@ -119,9 +123,9 @@ class App extends Component {
     } else {
       return (
       <MuiThemeProvider theme={theme}>
-      <div style={{display: 'flex', justifyContent: 'center'}}>
-        <CircularIndeterminate></CircularIndeterminate>
-      </div>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+          <CircularIndeterminate></CircularIndeterminate>
+        </div>
       </MuiThemeProvider>
       )
     }
