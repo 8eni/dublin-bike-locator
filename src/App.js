@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { BrowserRouter as Router, Route  } from 'react-router-dom';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './App.css';
 
+import { environment } from 'environment/environment';
 import Recent from './views/Recent';
 import Map from './views/Map';
 import Nearest from './views/Nearest';
-import axios from 'axios';
-import { environment } from 'environment/environment';
 import BottomNav from './components/BottomNav';
 import CircularIndeterminate from './components/CircularIndeterminate';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
   palette: {
@@ -25,9 +25,6 @@ class App extends Component {
 
   constructor(){
     super();
-    this.dbBaseUrl = environment.db_base_url;
-    this.dbContract = environment.db_contract;
-    this.dbApiKey = environment.db_api_key;
     this.getStations = this.getStations.bind(this)
     this.state = {
       center: {}, 
@@ -42,32 +39,31 @@ class App extends Component {
 
   getGeolocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.getStations(position.coords.latitude, position.coords.longitude)
+      navigator.geolocation.getCurrentPosition(pos => {
+        this.getStations(pos.coords.latitude, pos.coords.longitude)
         this.setState({
           center: {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude
           }
         });
       });
     }
   }
 
-  getStations(lat, lng) {
-    axios.get(`${this.dbBaseUrl}stations?contract=${this.dbContract}&apiKey=${this.dbApiKey}`)
-      .then(res => {
-        const result = res.data.map(item => {
-          item.distance = this.distance(
-            lat,
-            lng,
-            item.position.lat, item.position.lng, 'K').toFixed(2);
-            return item;
-        })
-        this.setState({ 
-          stations: this.getClosest(result)
-        })
-      });
+  async getStations(lat, lng) {
+    const { dbBaseUrl, dbContract, dbApiKey} = environment;
+    const response = await axios.get(`${dbBaseUrl}stations?contract=${dbContract}&apiKey=${dbApiKey}`)
+    const result = this.appendDistance(response, lat, lng);
+    this.setState({ stations: this.getClosest(result) });
+  }
+
+  appendDistance(response, lat, lng) {
+    const result = response.data.map(item => {
+      item.distance = this.distance(lat,lng, item.position.lat, item.position.lng, 'K').toFixed(2);
+      return item;
+    })
+    return result;
   }
 
   getClosest(stations) {
