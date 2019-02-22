@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
@@ -36,9 +37,25 @@ class BottomNav extends React.Component {
         showLabels
         className={classes.root}
       >
-        <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Nearby" icon={<PersonPinCircleIcon />} />
-        <BottomNavigationAction label="Nearby" icon={<NearMeIcon />} />
+        <BottomNavigationAction component={Link}
+          to="/"
+          label="Recent"
+          value="Recent"
+          label="Recent"
+          icon={<RestoreIcon />} />
+        <BottomNavigationAction component={Link}
+          to="/map"
+          label="map"
+          value="map"
+          label="Map"
+          icon={<PersonPinCircleIcon />} />
+        
+        <BottomNavigationAction component={Link}
+          to="/nearest"
+          label="nearest"
+          value="nearest"
+          label="Near by"
+          icon={<NearMeIcon />} />
       </BottomNavigation>
     );
   }

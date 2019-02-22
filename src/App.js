@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route  } from 'react-router-dom';
 import './App.css';
+
+import Recent from './views/Recent';
 import Map from './views/Map';
+import Nearest from './views/Nearest';
 import axios from 'axios';
 import { environment } from 'environment/environment';
 import BottomNav from './components/BottomNav';
 import CircularIndeterminate from './components/CircularIndeterminate';
-import StationDetails from './components/StationDetails';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -34,6 +37,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.getGeolocation();
+  }
+
+  getGeolocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.getStations(position.coords.latitude, position.coords.longitude)
@@ -65,8 +72,6 @@ class App extends Component {
 
   getClosest(stations) {
     return stations.sort((a,b) => (a.distance > b.distance) ? 1 : ((b.distance > a.distance) ? -1 : 0))
-    // debugger
-    // return newt[0];
   }
 
 
@@ -96,14 +101,23 @@ class App extends Component {
     if (this.state.stations.length) {
       return (
         <MuiThemeProvider theme={theme}>
-          { this.state.stations.map((station, i) =>
-
-            <StationDetails
-            key={ i }
-            stationDetails={ station } />
-          )}
-          {/* <Map stations={ this.state.stations } center={ this.state.center } zoom={ this.state.zoom }/> */}
-          <BottomNav />
+        <Router>
+          <div>
+            <Route
+              exact
+              path="/"
+              render={(props) => <Recent {...props} bool={ true } />} />
+            <Route
+              path="/map"
+              render={(props) => <Map {...props}
+                stations={ this.state.stations }
+                center={ this.state.center }
+                zoom={ this.state.zoom }
+              />} />
+            <Route exact path="/nearest" component={Nearest} />
+              <BottomNav />
+          </div>
+        </Router>   
         </MuiThemeProvider>
       );
     } else {

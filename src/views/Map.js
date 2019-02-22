@@ -11,9 +11,6 @@ import StationDetails from '../components/StationDetails';
 class Map extends Component {
   constructor(props) {
     super(props)
-    // this.dbBaseUrl = environment.db_base_url;
-    // this.dbContract = environment.db_contract;
-    // this.dbApiKey = environment.db_api_key;
     this.googleMapsApiKey = environment.google_maps_api_key;
     this.updateStation = this.updateStation.bind(this)
     // this.getStations = this.getStations.bind(this)
@@ -26,7 +23,7 @@ class Map extends Component {
   componentDidMount() {
     console.log(this.props);
     
-    this.getClosest(this.props.stations)
+    // this.getClosest(this.props.stations)
   }
 
   updateStation(val) {
@@ -41,35 +38,36 @@ class Map extends Component {
 
   render() {
     const { center, zoom, stations } = this.props;
+    return ( <div><h1>Map</h1> <h4>{ stations.length }</h4></div> );
 
-    if (Object.keys(center).length && stations.length) {
-      return (
-        <div style={{ height: '90vh', width: '100%' }}>
-          <StationDetails
-            stationDetails={ this.state.station } />
-          <GoogleMapReact
-            bootstrapURLKeys={{ key: this.googleMapsApiKey }}
-            center={ center }
-            defaultZoom={ zoom }>
-            <CurrentLocation
-              lat={ center.lat }
-              lng={ center.lng } />
-            { stations.map((station, i) =>
-              <Marker
-                key={ i }
-                viewStation={ this.updateStation }
-                lat={ station.position.lat }
-                lng={ station.position.lng }
-                station={ station } />
-            )}
-          </GoogleMapReact>
-        </div>
-      )
-    } else {
-      return (
-        <CircularIndeterminate></CircularIndeterminate>
-      )
-    }
+    // if (Object.keys(center).length && stations.length) {
+    //   return (
+    //     <div style={{ height: '90vh', width: '100%' }}>
+    //       <StationDetails
+    //         stationDetails={ this.state.station } />
+    //       <GoogleMapReact
+    //         bootstrapURLKeys={{ key: this.googleMapsApiKey }}
+    //         center={ center }
+    //         defaultZoom={ zoom }>
+    //         <CurrentLocation
+    //           lat={ center.lat }
+    //           lng={ center.lng } />
+    //         { stations.map((station, i) =>
+    //           <Marker
+    //             key={ i }
+    //             viewStation={ this.updateStation }
+    //             lat={ station.position.lat }
+    //             lng={ station.position.lng }
+    //             station={ station } />
+    //         )}
+    //       </GoogleMapReact>
+    //     </div>
+    //   )
+    // } else {
+    //   return (
+    //     <CircularIndeterminate></CircularIndeterminate>
+    //   )
+    // }
   }
 }
 
