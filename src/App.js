@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { BrowserRouter as Router, Route  } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './App.css';
@@ -53,13 +52,14 @@ class App extends Component {
 
   async getStations(lat, lng) {
     const { dbBaseUrl, dbContract, dbApiKey} = environment;
-    const response = await axios.get(`${dbBaseUrl}stations?contract=${dbContract}&apiKey=${dbApiKey}`)
-    const result = this.appendDistance(response, lat, lng);
+    const response = await fetch(`${dbBaseUrl}stations?contract=${dbContract}&apiKey=${dbApiKey}`)
+    const json = await response.json();
+    const result = this.appendDistance(json, lat, lng);
     this.setState({ stations: this.getClosest(result) });
   }
 
   appendDistance(response, lat, lng) {
-    const result = response.data.map(item => {
+    const result = response.map(item => {
       item.distance = this.distance(lat,lng, item.position.lat, item.position.lng, 'K').toFixed(2);
       return item;
     })
