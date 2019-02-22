@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 class Marker extends Component {
 
   constructor(props) {
-    super(props);
+    super();
     this.handleClick = this.handleClick.bind(this);
   }
 

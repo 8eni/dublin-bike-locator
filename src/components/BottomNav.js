@@ -36,8 +36,7 @@ class BottomNav extends React.Component {
         value={value}
         onChange={this.handleChange}
         showLabels
-        className={classes.root}
-      >
+        className={classes.root}>
         <BottomNavigationAction component={Link}
           to="/"
           label="Recent"
