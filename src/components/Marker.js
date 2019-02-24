@@ -1,4 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  root: {
+    display: 'block',
+    width: '20px',
+    height: '20px',
+    background: '#64ffda',
+    borderRadius: '20px'
+  }
+})
 class Marker extends Component {
 
   constructor(props) {
@@ -11,9 +23,15 @@ class Marker extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <div className="marker" onClick={ this.handleClick }></div>
+      <div className={classes.root} onClick={ this.handleClick }></div>
     )
   }
 }
-export default Marker;
+
+Marker.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Marker);
