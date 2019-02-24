@@ -26,9 +26,7 @@ class App extends Component {
     super();
     this.getStations = this.getStations.bind(this)
     this.state = {
-      center: {
-        lat: 53.343497 , lng: -6.23762 // Remove from prod
-      }, 
+      center: { }, 
       zoom: 16,
       stations: []
     }
@@ -41,14 +39,17 @@ class App extends Component {
   getGeolocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(pos => {
-        this.getStations(pos.coords.latitude, pos.coords.longitude)
-        // Add back fro prod
-        // this.setState({
-        //   center: {
-        //     lat: pos.coords.latitude,
-        //     lng: pos.coords.longitude
-        //   }
-        // });
+        this.getStations(
+          // pos.coords.latitude, pos.coords.longitude
+          53.343497, -6.23762
+        )
+        this.setState({
+          center: {
+            // lat: pos.coords.latitude,
+            // lng: pos.coords.longitude
+            lat: 53.343497 , lng: -6.23762
+          }
+        });
       });
     }
   }

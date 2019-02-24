@@ -19,7 +19,7 @@ class Map extends Component {
   }
 
   componentDidMount() {
-    
+    this.setState({ station: this.state.stations[0] })
   }
 
   updateStation(val) {
@@ -30,7 +30,7 @@ class Map extends Component {
     const { center, zoom, stations } = this.props;
     return (
       <div style={{ height: '94vh', width: '100%' }}>
-        <CurrentStation station={ stations[0]} />
+        <CurrentStation station={ this.state.station ? this.state.station : stations[0] } />
         <GoogleMapReact
           bootstrapURLKeys={{ key: this.googleMapsApiKey }}
           center={ center }
