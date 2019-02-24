@@ -31,20 +31,6 @@
   }
 }
 
-.stationList {
-  padding: 15px;
-}
-.currentStation {
-  position: absolute;
-  z-index: 2;
-  background: #fff;
-  width: 80%;
-  top: 10px;
-  left: 10px;
-  padding: 8px 14px;
-  border-radius: 2px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
-}
 .currentLocation {
   /* margin:-11px 0 0 -11px; */
   display: block;

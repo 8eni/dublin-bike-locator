@@ -11,12 +11,14 @@ import LocalParkingIcon from '@material-ui/icons/LocalParking';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
   },
   paper: {
     padding: theme.spacing.unit * 2,
     margin: 'auto',
     maxWidth: 500,
+    backgroundColor: '#424242',
+    color: '#fff'
   },
   image: {
     width: 128,
@@ -28,6 +30,9 @@ const styles = theme => ({
     maxWidth: '100%',
     maxHeight: '100%',
   },
+  text: {
+    color: '#fff'
+  }
 });
 
 function StationDetails(props) {
@@ -35,7 +40,7 @@ function StationDetails(props) {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <Grid container spacing={16}>
+        <Grid container>
           <Grid item>
             {/* <ButtonBase className={classes.image}>
               <img className={classes.img} alt="complex" src="/static/images/grid/complex.jpg" />
@@ -44,7 +49,7 @@ function StationDetails(props) {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={16}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">{ stationDetails.address }</Typography>
+                <Typography gutterBottom className={classes.text} variant="h6">{ stationDetails.address }</Typography>
                 <Badge className={classes.margin} badgeContent={stationDetails.available_bike_stands} color="primary">
                   <LocalParkingIcon />
                 </Badge>
@@ -54,13 +59,13 @@ function StationDetails(props) {
                 {/* <Typography gutterBottom>{ stationDetails.last_update}</Typography> */}
                 {/* <Typography color="textSecondary">BIKES: { stationDetails.available_bikes } | SPACES: { stationDetails.available_bike_stands }</Typography> */}
               </Grid>
-              <Grid item>
+              {/* <Grid item>
                 <Typography style={{ cursor: 'pointer' }}>Show on map</Typography>
-              </Grid>
+              </Grid> */}
             </Grid>
 
             <Grid item>
-              <Typography variant="h6">{ stationDetails.distance } km</Typography>
+              <Typography className={classes.text} variant="h6">{ stationDetails.distance } km</Typography>
             </Grid>
           </Grid>
         </Grid>

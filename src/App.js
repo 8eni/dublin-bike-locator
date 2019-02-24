@@ -74,7 +74,6 @@ class App extends Component {
     return stations.sort((a,b) => (a.distance > b.distance) ? 1 : ((b.distance > a.distance) ? -1 : 0))
   }
 
-
   distance(lat1, lon1, lat2, lon2, unit) {
     if ((lat1 === lat2) && (lon1 === lon2)) {
       return 0;
