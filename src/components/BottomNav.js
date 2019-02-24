@@ -14,7 +14,8 @@ const styles = {
     width: '100%',
     position: 'fixed',
     bottom: 0,
-    zIndex: 1
+    zIndex: 1,
+    boxShadow: 'rgba(0, 0, 0, 0.3) 0px -1px 4px -1px'
   },
 };
 
