@@ -1,15 +1,15 @@
 {
-  "main.css": "/dublin-bikes-locator/static/css/main.91fcd7c6.chunk.css",
-  "main.js": "/dublin-bikes-locator/static/js/main.bdb07ba0.chunk.js",
-  "main.js.map": "/dublin-bikes-locator/static/js/main.bdb07ba0.chunk.js.map",
-  "static/css/1.37d4f59b.chunk.css": "/dublin-bikes-locator/static/css/1.37d4f59b.chunk.css",
-  "static/js/1.37da0596.chunk.js": "/dublin-bikes-locator/static/js/1.37da0596.chunk.js",
-  "static/js/1.37da0596.chunk.js.map": "/dublin-bikes-locator/static/js/1.37da0596.chunk.js.map",
-  "runtime~main.js": "/dublin-bikes-locator/static/js/runtime~main.635b4bc9.js",
-  "runtime~main.js.map": "/dublin-bikes-locator/static/js/runtime~main.635b4bc9.js.map",
-  "static/css/1.37d4f59b.chunk.css.map": "/dublin-bikes-locator/static/css/1.37d4f59b.chunk.css.map",
-  "static/css/main.91fcd7c6.chunk.css.map": "/dublin-bikes-locator/static/css/main.91fcd7c6.chunk.css.map",
-  "index.html": "/dublin-bikes-locator/index.html",
-  "precache-manifest.f399afe19f43037fb5670f15986e9708.js": "/dublin-bikes-locator/precache-manifest.f399afe19f43037fb5670f15986e9708.js",
-  "service-worker.js": "/dublin-bikes-locator/service-worker.js"
+  "main.css": "/dublin-bike-locator/static/css/main.91fcd7c6.chunk.css",
+  "main.js": "/dublin-bike-locator/static/js/main.cc28f064.chunk.js",
+  "main.js.map": "/dublin-bike-locator/static/js/main.cc28f064.chunk.js.map",
+  "static/css/1.37d4f59b.chunk.css": "/dublin-bike-locator/static/css/1.37d4f59b.chunk.css",
+  "static/js/1.37da0596.chunk.js": "/dublin-bike-locator/static/js/1.37da0596.chunk.js",
+  "static/js/1.37da0596.chunk.js.map": "/dublin-bike-locator/static/js/1.37da0596.chunk.js.map",
+  "runtime~main.js": "/dublin-bike-locator/static/js/runtime~main.a9439b7f.js",
+  "runtime~main.js.map": "/dublin-bike-locator/static/js/runtime~main.a9439b7f.js.map",
+  "static/css/main.91fcd7c6.chunk.css.map": "/dublin-bike-locator/static/css/main.91fcd7c6.chunk.css.map",
+  "static/css/1.37d4f59b.chunk.css.map": "/dublin-bike-locator/static/css/1.37d4f59b.chunk.css.map",
+  "index.html": "/dublin-bike-locator/index.html",
+  "precache-manifest.48529bccb10cf32fa16c30fd3b2437de.js": "/dublin-bike-locator/precache-manifest.48529bccb10cf32fa16c30fd3b2437de.js",
+  "service-worker.js": "/dublin-bike-locator/service-worker.js"
 }
