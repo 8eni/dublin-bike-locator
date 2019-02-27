@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import PersonPinCircleIcon from '@material-ui/icons/PersonPinCircle';
+import ViewListIcon from '@material-ui/icons/ViewList';
+import MapIcon from '@material-ui/icons/Map';
 import NearMeIcon from '@material-ui/icons/NearMe';
 
 const styles = {
@@ -40,23 +40,22 @@ class BottomNav extends React.Component {
         className={classes.root}>
         <BottomNavigationAction component={Link}
           to="/"
-          label="Recent"
-          value="Recent"
-          label="Recent"
-          icon={<RestoreIcon />} />
+          label="Near by"
+          value="Near by"
+          label="Near by"
+          icon={<NearMeIcon />} />
         <BottomNavigationAction component={Link}
           to="/map"
           label="map"
           value="map"
           label="Map"
-          icon={<PersonPinCircleIcon />} />
-        
+          icon={<MapIcon />} />
         <BottomNavigationAction component={Link}
-          to="/nearest"
-          label="nearest"
-          value="nearest"
-          label="Near by"
-          icon={<NearMeIcon />} />
+          to="/stations"
+          label="stations"
+          value="stations"
+          label="Stations"
+          icon={<ViewListIcon />} />
       </BottomNavigation>
     );
   }

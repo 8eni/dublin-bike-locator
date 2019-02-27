@@ -4,9 +4,9 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './App.css';
 
 import { environment } from './environment/environment';
-import Recent from './views/Recent';
+import Nearby from './views/Nearby';
 import Map from './views/Map';
-import Nearest from './views/Nearest';
+import Stations from './views/Stations';
 import BottomNav from './components/BottomNav';
 import CircularIndeterminate from './components/CircularIndeterminate';
 
@@ -105,7 +105,7 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={(props) => <Recent {...props} />} />
+              render={(props) => <Nearby {...props} />} />
             <Route
               path="/map"
               render={(props) => <Map {...props}
@@ -114,8 +114,8 @@ class App extends Component {
                 zoom={ this.state.zoom }
               />} />
             <Route
-              path="/nearest"
-              render={(props) => <Nearest {...props}
+              path="/stations"
+              render={(props) => <Stations {...props}
                 stations={ this.state.stations }
               />} />
               <BottomNav />

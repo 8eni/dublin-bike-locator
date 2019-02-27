@@ -9,10 +9,10 @@ const styles = () => ({
     padding: '15px'
   }
 })
-const Nearest = ({ classes, stations }) => <div className={classes.root}><StationList stations={stations} /></div>
+const Stations = ({ classes, stations }) => <div className={classes.root}><StationList stations={stations} /></div>
 
-Nearest.protoTypes = {
+Stations.protoTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Nearest);
+export default withStyles(styles)(Stations);
