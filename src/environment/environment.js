@@ -1,5 +1,4 @@
 export const environment = {
-  production: false,
   dbBaseUrl: 'https://api.jcdecaux.com/vls/v1/',
   dbContract: 'Dublin',
   dbApiKey: 'bbbdbe0c576a57bd979453af7228f03a88759b13',

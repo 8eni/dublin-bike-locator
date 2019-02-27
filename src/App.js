@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route  } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './App.css';
 
-import { environment } from 'environment/environment';
+import { environment } from './environment/environment';
 import Recent from './views/Recent';
 import Map from './views/Map';
 import Nearest from './views/Nearest';
@@ -40,14 +40,13 @@ class App extends Component {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(pos => {
         this.getStations(
-          // pos.coords.latitude, pos.coords.longitude
-          53.343497, -6.23762
+          pos.coords.latitude,
+          pos.coords.longitude
         )
         this.setState({
           center: {
-            // lat: pos.coords.latitude,
-            // lng: pos.coords.longitude
-            lat: 53.343497 , lng: -6.23762
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude
           }
         });
       });
