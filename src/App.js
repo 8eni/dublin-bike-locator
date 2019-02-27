@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route  } from 'react-router-dom';
+import { BrowserRouter, Route  } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './App.css';
 
@@ -40,13 +40,14 @@ class App extends Component {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(pos => {
         this.getStations(
-          pos.coords.latitude,
-          pos.coords.longitude
+          pos.coords.latitude, pos.coords.longitude
+          // 53.3442, -6.2400
         )
         this.setState({
           center: {
             lat: pos.coords.latitude,
             lng: pos.coords.longitude
+            // lat: 53.3442 , lng: -6.2400
           }
         });
       });
@@ -99,7 +100,7 @@ class App extends Component {
     if (this.state.stations.length) {
       return (
         <MuiThemeProvider theme={theme}>
-        <Router>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <div>
             <Route
               exact
@@ -119,7 +120,7 @@ class App extends Component {
               />} />
               <BottomNav />
           </div>
-        </Router>   
+        </BrowserRouter>   
         </MuiThemeProvider>
       );
     } else {
