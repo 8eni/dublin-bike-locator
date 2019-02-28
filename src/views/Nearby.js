@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import LocalParkingIcon from '@material-ui/icons/LocalParking';
 import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
-import LabelIcon from '@material-ui/icons/Label';
+import NearMeIcon from '@material-ui/icons/NearMe';
 import LabelOffIcon from '@material-ui/icons/LabelOff';
 import BikeStands from '../components/BikeStands'
 
@@ -21,7 +21,7 @@ const styles = theme => ({
     color: theme.palette.text.secondary,
   },
   grid: {
-    border: 'solid 1px #ccc',
+    borderBottom: 'solid 1px #424242',
     color: '#fff'
   },
   text: {
@@ -31,10 +31,15 @@ const styles = theme => ({
     padding: '10px'
   },
   table: {
-    width: '100%'
+    width: '100%',
+    fontSize: '12px'
   },
   bike: {
     color: '#ff3d00'
+  },
+  grey: {
+    color: '#9e9e9e',
+    fontSize: '18px'
   }
 });
 
@@ -48,55 +53,54 @@ function Nearby({ classes, stations, currentStation }) {
           <Typography align='center' className={classes.text} variant="subheading">{currentStation.distance} km</Typography>
         </Grid>
         
-        <Grid className={classes.grid} item xs={6}>
+        <Grid className={classes.grid} item xs={8}>
+          
           <Grid className={classes.grid} container item xs={12}>
-            <Grid className={classes.grid} item xs={6}>
+            <Grid  item xs={6}>
               <Typography className={classes.text} align='center'>Stands</Typography>
-              <Typography className={classes.text} variant="h6" align='center'><LocalParkingIcon color='primary'/>{currentStation.available_bike_stands}</Typography>
+              <Typography className={classes.text} variant="h6" align='center'><LocalParkingIcon className={classes.bike} />{currentStation.available_bike_stands}</Typography>
             </Grid>
-            <Grid className={classes.grid} item xs={6}>
+            <Grid item xs={6}>
               <Typography className={classes.text} align='center'>Bikes</Typography>
-              <Typography className={classes.text} variant="h6" align='center'><DirectionsBikeIcon className={classes.bike}/>{currentStation.available_bikes}</Typography>
+              <Typography className={classes.text} variant="h6" align='center'><DirectionsBikeIcon color='primary' />{currentStation.available_bikes}</Typography>
             </Grid>
-            
- 
           </Grid>
-        </Grid>
-        <Grid className={classes.grid} item xs={6}>
-          <Typography align='center' className={classes.text}>{currentStation.status} - {currentStation.bike_stands} Stands</Typography>
+
           <Grid className={classes.grid} container item xs={12}>
+          <Typography className={classes.text} variant="caption">Other stations</Typography>
+            <table className={classes.table}>
+              {/* <tr>
+                <th align="left"></th>
+                <th align="left"><LocalParkingIcon className={classes.grey} /></th> 
+                <th align="left"><DirectionsBikeIcon className={classes.grey} /></th>
+                <th align="left"><NearMeIcon className={classes.grey} /></th>
+              </tr> */}
+              <tr>
+                <th align="left">Station</th>
+                <th align="left">Stands</th> 
+                <th align="left">Bikes</th> 
+                <th align="left">km</th> 
+              </tr>
+
+              { stations.map((station, i) =>
+              (i < 10) ?
+                <tr>
+                  <td>{station.address}</td>
+                  <td>{station.available_bike_stands}</td>
+                  <td>{station.available_bikes}</td>
+                  <td>{station.distance} km</td>
+                </tr> : ''
+              )}
+            </table>
+          </Grid>
+
+        </Grid>
+        <Grid className={classes.grid} item xs={4}>
+          <Typography align='center' className={classes.text}>{currentStation.status}</Typography>
+          <Grid container item xs={12}>
             <BikeStands bikeStands={currentStation.bike_stands} availableBikes={currentStation.available_bikes} />
           </Grid>
         </Grid>
-        <Grid className={classes.grid} item xs={12}>
-          <Typography  variant="subheading">Other stations</Typography>
-          <table className={classes.table}>
-          <tr>
-            <th align="left">station</th>
-            <th align="left">stands</th> 
-            <th align="left">bikes</th>
-            <th align="left">distance</th>
-          </tr>
-          <tr>
-            <td>Alpha</td>
-            <td>10</td>
-            <td>30</td>
-            <td>0.25km</td>
-          </tr>
-          <tr>
-            <td>Beta</td>
-            <td>10</td>
-            <td>30</td>
-            <td>0.25km</td>
-          </tr>
-          <tr>
-            <td>Charlie</td>
-            <td>10</td>
-            <td>30</td>
-            <td>0.25km</td>
-          </tr>
-        </table>
-      </Grid>
       <Grid className={classes.grid} item xs={12}>
         <Typography align='center' variant="caption">last updated -  14:30</Typography>
       </Grid>

@@ -22,14 +22,10 @@ code {
   box-sizing: border-box;
   padding: 0 0 65px 0 ;
 }
-.main {
-  background: #f00;
+.main,
+.main > div {
   height: 100%;
 }
-.main > div{
-  height: 100%;
-}
-
 .stand > span {
   background: #69f0ae;
   font-size: 11px;
