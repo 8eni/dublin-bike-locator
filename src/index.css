@@ -1,3 +1,7 @@
+html, body, #root, #wrapper {
+  height: 100%;
+  background: #000;
+}
 body {
   margin: 0;
   padding: 0;
@@ -12,4 +16,32 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+#wrapper {
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 0 65px 0 ;
+}
+.main {
+  background: #f00;
+  height: 100%;
+}
+.main > div{
+  height: 100%;
+}
+
+.stand > span {
+  background: #69f0ae;
+  font-size: 11px;
+  margin: 0 5px;
+  width: 20px;
+  height: 20px;
+  display: block;
+  text-align: center;
+  border-bottom: solid #212121 1px;
+  color: #212121;
+  font-weight: bold;
+}
+.stand.nobike > span {
+  background: #ff3d00;
 }

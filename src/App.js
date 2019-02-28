@@ -101,11 +101,15 @@ class App extends Component {
       return (
         <MuiThemeProvider theme={theme}>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
-          <div>
+          <div id="wrapper">
+          <div className='main'>
             <Route
               exact
               path="/"
-              render={(props) => <Nearby {...props} />} />
+              render={(props) => <Nearby {...props}
+                stations={ this.state.stations }
+                currentStation={ this.state.stations[0] }
+              />} />
             <Route
               path="/map"
               render={(props) => <Map {...props}
@@ -118,7 +122,9 @@ class App extends Component {
               render={(props) => <Stations {...props}
                 stations={ this.state.stations }
               />} />
-              <BottomNav />
+
+              </div>
+            <BottomNav />
           </div>
         </BrowserRouter>   
         </MuiThemeProvider>

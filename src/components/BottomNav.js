@@ -15,6 +15,7 @@ const styles = {
     position: 'fixed',
     bottom: 0,
     zIndex: 1,
+    height: '65px',
     boxShadow: 'rgba(0, 0, 0, 0.3) 0px -1px 4px -1px'
   },
 };
