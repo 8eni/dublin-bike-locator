@@ -7,6 +7,7 @@ import { environment } from './environment/environment';
 import Nearby from './views/Nearby';
 import Map from './views/Map';
 import Stations from './views/Stations';
+import Header from './components/Header';
 import BottomNav from './components/BottomNav';
 import CircularIndeterminate from './components/CircularIndeterminate';
 
@@ -16,7 +17,16 @@ const theme = createMuiTheme({
       main: '#64ffda',
     },
     secondary: {
-      main: '#263238',
+      main: '#212121',
+      main50: '#fafafa',
+      main100: '#f5f5f5',
+      main200: '#eeeeee',
+      main300: '#e0e0e0',
+      main400: '#bdbdbd',
+      main500: '#9e9e9e',
+      main600: '#757575',
+      main700: '#616161',
+      main800: '#424242'
     },
   },
 });
@@ -102,6 +112,7 @@ class App extends Component {
         <MuiThemeProvider theme={theme}>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <div id="wrapper">
+          <Header currentStation={ this.state.stations[0] } />
           <div className='main'>
             <Route
               exact

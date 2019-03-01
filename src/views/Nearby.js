@@ -48,10 +48,7 @@ function Nearby({ classes, stations, currentStation }) {
   return (
     <div className={classes.root}>
       <Grid className={classes.gridContainer} container >
-        <Grid className={classes.grid} item xs={12}>
-          <Typography align='center' className={classes.text} variant="h4">{currentStation.address}</Typography>
-          <Typography align='center' className={classes.text} variant="subheading">{currentStation.distance} km</Typography>
-        </Grid>
+        
         
         <Grid className={classes.grid} item xs={8}>
           
