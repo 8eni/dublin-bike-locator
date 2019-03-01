@@ -9,7 +9,13 @@ const styles = () => ({
     padding: '15px'
   }
 })
-const Stations = ({ classes, stations }) => <div className={classes.root}><StationList stations={stations} /></div>
+const Stations = ({ classes, stations, currentStation }) =>
+  <div className={classes.root}>
+    <StationList
+      stations={stations} 
+      currentStationId={ currentStation.number } 
+      showCount={stations.length} />
+  </div>
 
 Stations.protoTypes = {
   classes: PropTypes.object.isRequired

@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import LocalParkingIcon from '@material-ui/icons/LocalParking';
 import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
 import BikeStands from '../components/BikeStands'
+import StationList from '../components/StationList';
 
 const styles = theme => ({
   root: {
@@ -63,33 +64,10 @@ function Nearby({ classes, stations, currentStation }) {
 
           <Grid className={classes.grid} container item xs={12}>
           <Typography className={classes.text} variant="caption">Other stations</Typography>
-            <table className={classes.table}>
-              {/* <tr>
-                <th align="left"></th>
-                <th align="left"><LocalParkingIcon className={classes.grey} /></th> 
-                <th align="left"><DirectionsBikeIcon className={classes.grey} /></th>
-                <th align="left"><NearMeIcon className={classes.grey} /></th>
-              </tr> */}
-              <thead>
-              <tr>
-                <th align="left">Station</th>
-                <th align="left">Stands</th> 
-                <th align="left">Bikes</th> 
-                <th align="left">km</th> 
-              </tr>
-              </thead>
-              <tbody>
-              { stations.map((station, i) =>
-                (i < 10) &&
-                <tr key={ i }>
-                  <td>{station.address}</td>
-                  <td>{station.available_bike_stands}</td>
-                  <td>{station.available_bikes}</td>
-                  <td>{station.distance} km</td>
-                </tr>
-              )}
-              </tbody>
-            </table>
+            <StationList
+              stations={stations}
+              currentStationId={currentStation.number}
+              showCount='10'></StationList>
           </Grid>
 
         </Grid>

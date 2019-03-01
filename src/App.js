@@ -144,6 +144,7 @@ class App extends Component {
               path="/stations"
               render={(props) => <Stations {...props}
                 stations={ this.state.stations }
+                currentStation={ this.state.station }
               />} />
 
               </div>
