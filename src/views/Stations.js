@@ -5,13 +5,12 @@ import StationList from '../components/StationList';
 
 const styles = () => ({
   root: {
-    backgroundColor: '#212121',
     padding: '15px'
   }
 })
 const Stations = ({ classes, stations, currentStation }) =>
-  <div className={classes.root}>
-    <StationList
+  <div>
+    <StationList className={classes.root}
       stations={stations} 
       currentStationId={ currentStation.number } 
       showCount={stations.length} />
