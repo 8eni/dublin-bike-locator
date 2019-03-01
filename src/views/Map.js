@@ -3,7 +3,6 @@ import GoogleMapReact from 'google-map-react';
 
 import { environment } from '../environment/environment';
 import CurrentLocation from '../components/CurrentLocation';
-import CurrentStation from '../components/CurrentStation';  
 import MapStyles from '../assets/MapStyles';  
 import Marker from '../components/Marker';
 
@@ -24,13 +23,13 @@ class Map extends Component {
 
   updateStation(val) {
     this.setState({ station: val })
+    this.props.updateStation(val);
   }
 
   render() {
     const { center, zoom, stations } = this.props;
     return (
-      <div style={{ height: '94vh', width: '100%' }}>
-        <CurrentStation station={ this.state.station ? this.state.station : stations[0] } />
+      <div>
         <GoogleMapReact
           bootstrapURLKeys={{ key: this.googleMapsApiKey }}
           center={ center }

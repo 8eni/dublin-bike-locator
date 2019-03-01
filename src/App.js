@@ -12,6 +12,9 @@ import BottomNav from './components/BottomNav';
 import CircularIndeterminate from './components/CircularIndeterminate';
 
 const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
   palette: {
     primary: {
       main: '#64ffda',
@@ -35,10 +38,12 @@ class App extends Component {
   constructor(){
     super();
     this.getStations = this.getStations.bind(this)
+    this.updateStation = this.updateStation.bind(this)
     this.state = {
       center: { }, 
       zoom: 16,
-      stations: []
+      stations: [],
+      station: ''
     }
   }
 
@@ -64,6 +69,10 @@ class App extends Component {
     }
   }
 
+  updateStation(val) {
+    this.setState({ station: val })
+  }
+
   async getStations(lat, lng) {
     const { dbBaseUrl, dbContract, dbApiKey} = environment;
     const response = await fetch(`${dbBaseUrl}stations?contract=${dbContract}&apiKey=${dbApiKey}`)
@@ -81,7 +90,9 @@ class App extends Component {
   }
 
   getClosest(stations) {
-    return stations.sort((a,b) => (a.distance > b.distance) ? 1 : ((b.distance > a.distance) ? -1 : 0))
+    const result = stations.sort((a,b) => (a.distance > b.distance) ? 1 : ((b.distance > a.distance) ? -1 : 0));
+    this.setState({ station: result[0]} )
+    return result;
   }
 
   distance(lat1, lon1, lat2, lon2, unit) {
@@ -112,18 +123,19 @@ class App extends Component {
         <MuiThemeProvider theme={theme}>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <div id="wrapper">
-          <Header currentStation={ this.state.stations[0] } />
+          <Header currentStation={ this.state.station } />
           <div className='main'>
             <Route
               exact
               path="/"
               render={(props) => <Nearby {...props}
                 stations={ this.state.stations }
-                currentStation={ this.state.stations[0] }
+                currentStation={ this.state.station }
               />} />
             <Route
               path="/map"
               render={(props) => <Map {...props}
+                updateStation={ this.updateStation }
                 stations={ this.state.stations }
                 center={ this.state.center }
                 zoom={ this.state.zoom }

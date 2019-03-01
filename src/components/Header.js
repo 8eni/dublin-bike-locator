@@ -10,7 +10,8 @@ const styles = theme => ({
     maxHeight: '65px',
     padding: '5px',
     color: '#fff',
-    position: 'absolute',
+    position: 'fixed',
+    zIndex: 5,
     width: '100%',
     top: 0,
     background: theme.palette.secondary.main,
@@ -21,7 +22,7 @@ const styles = theme => ({
 const Header = ({ currentStation, classes }) => 
   <Grid item xs={12} className={`header ${classes.root}`}>
     <Typography align='center' variant="h5" color="inherit">{currentStation.address}</Typography>
-    <Typography align='center' variant="subheading" color="inherit"><NearMeIcon fontSize="inherit" /> {currentStation.distance} km</Typography>
+    <Typography align='center' variant="subtitle1" color="inherit"><NearMeIcon fontSize="inherit" /> {currentStation.distance} km</Typography>
   </Grid>
 
 Header.propTypes = {

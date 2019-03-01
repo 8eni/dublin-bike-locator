@@ -10,7 +10,6 @@ import NearMeIcon from '@material-ui/icons/NearMe';
 
 const styles = {
   root: {
-    width: 500,
     width: '100%',
     position: 'fixed',
     bottom: 0,
@@ -43,19 +42,16 @@ class BottomNav extends React.Component {
           to="/"
           label="Near by"
           value="Near by"
-          label="Near by"
           icon={<NearMeIcon />} />
         <BottomNavigationAction component={Link}
           to="/map"
           label="map"
           value="map"
-          label="Map"
           icon={<MapIcon />} />
         <BottomNavigationAction component={Link}
           to="/stations"
           label="stations"
           value="stations"
-          label="Stations"
           icon={<ViewListIcon />} />
       </BottomNavigation>
     );

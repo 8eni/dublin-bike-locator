@@ -8,7 +8,8 @@ class BikeStands extends Component {
     for (let i = 0; i < bikeStands; i++) {
       table.push(
         <Grid item xs={6}
-          align={ Math.abs(i % 2) == 1 ? "left" : "right"}
+          key={ i }
+          align={ Math.abs(i % 2) === 1 ? "left" : "right"}
           className={`stand ${(availableBikes > i ? 'bike' : 'nobike')}`}>
           <span>{ i+1 }</span>
         </Grid>
