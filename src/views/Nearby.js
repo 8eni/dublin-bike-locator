@@ -48,7 +48,6 @@ function Nearby({ classes, stations, currentStation }) {
     <div className={classes.root}>
       <Grid className={classes.gridContainer} container >
         
-        
         <Grid className={classes.grid} item xs={8}>
           
           <Grid className={classes.grid} container item xs={12}>
@@ -67,7 +66,7 @@ function Nearby({ classes, stations, currentStation }) {
             <StationList
               stations={stations}
               currentStationId={currentStation.number}
-              showCount='10'></StationList>
+              showCount='6'></StationList>
           </Grid>
 
         </Grid>
