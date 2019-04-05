@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/dublin-bike-locator/precache-manifest.0424bdad2e2225ab143cc38bb230d33f.js"
+  "/dublin-bike-locator/precache-manifest.03331ab2a4410042fd17b16c0dbbcdb6.js"
 );
 
 workbox.clientsClaim();
