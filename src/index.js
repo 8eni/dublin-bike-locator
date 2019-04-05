@@ -10,7 +10,6 @@ import './index.css';
 const target = document.querySelector('#root');
 
 render(
-  <link rel="apple-touch-icon" sizes="180x180" href="https://8eni.github.io/dublin-bike-locator/images/icons/icon-72x72.png"></link>
   <App />,
   target
 );
