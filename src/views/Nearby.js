@@ -11,7 +11,7 @@ import StationList from '../components/StationList';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    background: '#212121',
+    // background: '#212121',
     color: '#fff'
   },
   paper: {
@@ -19,20 +19,20 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
-  grid: {
-    borderBottom: 'solid 1px #424242',
-    color: '#fff'
-  },
+  // grid: {
+  //   borderBottom: 'solid 1px #424242',
+  //   color: '#fff'
+  // },
   text: {
     color: '#fff'
   },
-  gridContainer: {
-    padding: '10px'
-  },
-  table: {
-    width: '100%',
-    fontSize: '12px'
-  },
+  // gridContainer: {
+  //   padding: '10px'
+  // },
+  // table: {
+  //   width: '100%',
+  //   fontSize: '12px'
+  // },
   bike: {
     color: '#ff3d00'
   },
@@ -50,7 +50,7 @@ function Nearby({ classes, stations, currentStation }) {
         
         <Grid className={classes.grid} item xs={8}>
           
-          <Grid className={classes.grid} container item xs={12}>
+          {/* <Grid className={classes.grid} container item xs={12}>
             <Grid  item xs={6}>
               <Typography className={classes.text} align='center'>Stands</Typography>
               <Typography className={classes.text} variant="h6" align='center'><LocalParkingIcon className={classes.bike} />{currentStation.available_bike_stands}</Typography>
@@ -59,10 +59,10 @@ function Nearby({ classes, stations, currentStation }) {
               <Typography className={classes.text} align='center'>Bikes</Typography>
               <Typography className={classes.text} variant="h6" align='center'><DirectionsBikeIcon color='primary' />{currentStation.available_bikes}</Typography>
             </Grid>
-          </Grid>
+          </Grid> */}
 
-          <Grid className={classes.grid} container item xs={12}>
-          <Typography className={classes.text} variant="caption">Other stations</Typography>
+          <Grid className={classes.grid}>
+          {/* <Typography className={classes.text} variant="caption">Other stations</Typography> */}
             <StationList
               stations={stations}
               currentStationId={currentStation.number}
@@ -76,9 +76,9 @@ function Nearby({ classes, stations, currentStation }) {
             <BikeStands bikeStands={currentStation.bike_stands} availableBikes={currentStation.available_bikes} />
           </Grid>
         </Grid>
-      <Grid className={classes.grid} item xs={12}>
+      {/* <Grid className={classes.grid} item xs={12}>
         <Typography align='center' variant="caption">last updated -  14:30</Typography>
-      </Grid>
+      </Grid> */}
       </Grid>
     </div>
   );
