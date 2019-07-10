@@ -1,6 +1,6 @@
 html, body, #root, #wrapper {
   height: 100%;
-  background: #fff;
+  background: #eee;
 }
 body {
   margin: 0;
@@ -26,7 +26,7 @@ code {
 .main > div {
   height: 100%;
 }
-.stand > span {
+/* .stand > span {
   background: #69f0ae;
   font-size: 11px;
   margin: 0 5px;
@@ -40,5 +40,5 @@ code {
 }
 .stand.nobike > span {
   background: #ff3d00;
-}
+} */
 

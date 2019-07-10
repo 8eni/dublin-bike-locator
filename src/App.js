@@ -15,23 +15,23 @@ const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
   },
-  palette: {
-    primary: {
-      main: '#64ffda',
-    },
-    secondary: {
-      main: '#212121',
-      main50: '#fafafa',
-      main100: '#f5f5f5',
-      main200: '#eeeeee',
-      main300: '#e0e0e0',
-      main400: '#bdbdbd',
-      main500: '#9e9e9e',
-      main600: '#757575',
-      main700: '#616161',
-      main800: '#424242'
-    },
-  },
+  // palette: {
+  //   primary: {
+  //     main: '#64ffda',
+  //   },
+  //   secondary: {
+  //     main: '#212121',
+  //     main50: '#fafafa',
+  //     main100: '#f5f5f5',
+  //     main200: '#eeeeee',
+  //     main300: '#e0e0e0',
+  //     main400: '#bdbdbd',
+  //     main500: '#9e9e9e',
+  //     main600: '#757575',
+  //     main700: '#616161',
+  //     main800: '#424242'
+  //   },
+  // },
 });
 class App extends Component {
 
@@ -127,13 +127,13 @@ class App extends Component {
           <div className='main'>
             <Route
               exact
-              path="/"
+              path="/nearby"
               render={(props) => <Nearby {...props}
                 stations={ this.state.stations }
                 currentStation={ this.state.station }
               />} />
             <Route
-              path="/map"
+              path="/"
               render={(props) => <Map {...props}
                 updateStation={ this.updateStation }
                 stations={ this.state.stations }

@@ -38,21 +38,21 @@ class BottomNav extends React.Component {
         onChange={this.handleChange}
         showLabels
         className={classes.root}>
-        <BottomNavigationAction component={Link}
+        {/* <BottomNavigationAction component={Link}
           to="/"
           label="Near by"
           value="Near by"
-          icon={<NearMeIcon />} />
+          icon={<NearMeIcon />} /> */}
         <BottomNavigationAction component={Link}
           to="/map"
           label="map"
           value="map"
           icon={<MapIcon />} />
-        <BottomNavigationAction component={Link}
+        {/* <BottomNavigationAction component={Link}
           to="/stations"
           label="stations"
           value="stations"
-          icon={<ViewListIcon />} />
+          icon={<ViewListIcon />} /> */}
       </BottomNavigation>
     );
   }
