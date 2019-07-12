@@ -27,7 +27,7 @@ class Map extends Component {
   }
 
   render() {
-    const { center, zoom, stations } = this.props;
+    const { center, zoom, stations, isBike } = this.props;
     return (
       <div>
         <GoogleMapReact
@@ -41,6 +41,7 @@ class Map extends Component {
           { stations.map((station, i) =>
             <Marker
               key={ i }
+              number={ isBike ? station.available_bikes : station.available_bike_stands }
               viewStation={ this.updateStation }
               lat={ station.position.lat }
               lng={ station.position.lng }

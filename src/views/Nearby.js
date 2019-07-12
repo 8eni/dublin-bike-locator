@@ -7,12 +7,16 @@ import LocalParkingIcon from '@material-ui/icons/LocalParking';
 import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
 import BikeStands from '../components/BikeStands'
 import StationList from '../components/StationList';
+import Paper from '@material-ui/core/Paper';
+import Chip from '@material-ui/core/Chip';
+import Avatar from '@material-ui/core/Avatar';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
+    margin: 5,
     // background: '#212121',
-    color: '#fff'
+    color: '#ccc'
   },
   paper: {
     padding: theme.spacing.unit * 2,
@@ -46,8 +50,15 @@ function Nearby({ classes, stations, currentStation }) {
 
   return (
     <div className={classes.root}>
+      
       <Grid className={classes.gridContainer} container >
-        
+      <Chip
+          size="small"
+          avatar={<Avatar><DirectionsBikeIcon></DirectionsBikeIcon></Avatar>}
+          label={currentStation.available_bikes}
+          variant="outlined"
+          color="primary"
+        />
         <Grid className={classes.grid} item xs={8}>
           
           {/* <Grid className={classes.grid} container item xs={12}>
@@ -63,17 +74,21 @@ function Nearby({ classes, stations, currentStation }) {
 
           <Grid className={classes.grid}>
           {/* <Typography className={classes.text} variant="caption">Other stations</Typography> */}
+          <Paper className={classes.root}>
             <StationList
               stations={stations}
               currentStationId={currentStation.number}
               showCount='6'></StationList>
+          </Paper>
           </Grid>
 
         </Grid>
         <Grid className={classes.grid} item xs={4}>
           <Typography align='center' className={classes.text}>{currentStation.status}</Typography>
           <Grid container item xs={12}>
+          <Paper className={classes.root}>
             <BikeStands bikeStands={currentStation.bike_stands} availableBikes={currentStation.available_bikes} />
+          </Paper>
           </Grid>
         </Grid>
       {/* <Grid className={classes.grid} item xs={12}>

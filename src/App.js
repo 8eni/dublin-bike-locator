@@ -4,34 +4,31 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './App.css';
 
 import { environment } from './environment/environment';
-import Nearby from './views/Nearby';
 import Map from './views/Map';
-import Stations from './views/Stations';
 import Header from './components/Header';
-import BottomNav from './components/BottomNav';
 import CircularIndeterminate from './components/CircularIndeterminate';
 
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
   },
-  palette: {
-    primary: {
-      main: '#64ffda',
-    },
-    secondary: {
-      main: '#212121',
-      main50: '#fafafa',
-      main100: '#f5f5f5',
-      main200: '#eeeeee',
-      main300: '#e0e0e0',
-      main400: '#bdbdbd',
-      main500: '#9e9e9e',
-      main600: '#757575',
-      main700: '#616161',
-      main800: '#424242'
-    },
-  },
+  // palette: {
+  //   primary: {
+  //     main: '#64ffda',
+  //   },
+  //   secondary: {
+  //     main: '#212121',
+  //     main50: '#fafafa',
+  //     main100: '#f5f5f5',
+  //     main200: '#eeeeee',
+  //     main300: '#e0e0e0',
+  //     main400: '#bdbdbd',
+  //     main500: '#9e9e9e',
+  //     main600: '#757575',
+  //     main700: '#616161',
+  //     main800: '#424242'
+  //   },
+  // },
 });
 class App extends Component {
 
@@ -45,6 +42,7 @@ class App extends Component {
       stations: [],
       station: ''
     }
+    this.isBike = true; // Add Pre-screen to decide this state
   }
 
   componentDidMount() {
@@ -70,7 +68,11 @@ class App extends Component {
   }
 
   updateStation(val) {
-    this.setState({ station: val })
+    const setActiveStation = this.state.stations.map(s => (val.number === s.number) ? (s.active = true, s) : (s.active = false, s))
+    this.setState({ 
+      station: val,
+      stations: setActiveStation
+    })
   }
 
   async getStations(lat, lng) {
@@ -91,7 +93,8 @@ class App extends Component {
 
   getClosest(stations) {
     const result = stations.sort((a,b) => (a.distance > b.distance) ? 1 : ((b.distance > a.distance) ? -1 : 0));
-    this.setState({ station: result[0]} )
+    result[0].active = true;
+    this.setState({ station: result[0] } )
     return result;
   }
 
@@ -126,29 +129,15 @@ class App extends Component {
           <Header currentStation={ this.state.station } />
           <div className='main'>
             <Route
-              exact
               path="/"
-              render={(props) => <Nearby {...props}
-                stations={ this.state.stations }
-                currentStation={ this.state.station }
-              />} />
-            <Route
-              path="/map"
               render={(props) => <Map {...props}
+                isBike={ this.isBike }
                 updateStation={ this.updateStation }
                 stations={ this.state.stations }
                 center={ this.state.center }
                 zoom={ this.state.zoom }
               />} />
-            <Route
-              path="/stations"
-              render={(props) => <Stations {...props}
-                stations={ this.state.stations }
-                currentStation={ this.state.station }
-              />} />
-
               </div>
-            <BottomNav />
           </div>
         </BrowserRouter>   
         </MuiThemeProvider>

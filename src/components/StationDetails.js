@@ -13,23 +13,30 @@ function StationDetails(props) {
   return (
     <div>
       <ListItem button>
+      
         <ListItemText
           primary={`${stationDetails.address}`}
           secondary={`${stationDetails.distance}km`}
         />
         <ListItemSecondaryAction>
+        <Chip
+        size="small"
+        avatar={<Avatar>Km</Avatar>}
+        label="Clickable Chip"
+      />
           <Chip
+          size="small"
           avatar={<Avatar>{stationDetails.available_bikes}</Avatar>}
           label={<DirectionsBikeIcon></DirectionsBikeIcon>}
           variant="outlined"
-          color="primary"
+          color="secondary"
         />
-        <Chip
+        {/* <Chip
           avatar={<Avatar>{stationDetails.available_bike_stands}</Avatar>}
           label={<LocalParkingIcon></LocalParkingIcon>}
           variant="outlined"
           color="secondary"
-        />
+        /> */}
         </ListItemSecondaryAction>
       </ListItem>
       <Divider />
