@@ -20,10 +20,7 @@ const styles = theme => ({
     top: 0,
     // background: theme.palette.secondary.main,
     // borderBottom: `solid 1px ${theme.palette.secondary.main800}`
-  },
-  chip: {
-    margin: theme.spacing(1),
-  },
+  }
 })
 
 const Header = ({ currentStation, classes }) => 
