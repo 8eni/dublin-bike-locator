@@ -4,11 +4,8 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './App.css';
 
 import { environment } from './environment/environment';
-import Nearby from './views/Nearby';
 import Map from './views/Map';
-import Stations from './views/Stations';
 import Header from './components/Header';
-import BottomNav from './components/BottomNav';
 import CircularIndeterminate from './components/CircularIndeterminate';
 
 const theme = createMuiTheme({
@@ -126,13 +123,6 @@ class App extends Component {
           <Header currentStation={ this.state.station } />
           <div className='main'>
             <Route
-              exact
-              path="/nearby"
-              render={(props) => <Nearby {...props}
-                stations={ this.state.stations }
-                currentStation={ this.state.station }
-              />} />
-            <Route
               path="/"
               render={(props) => <Map {...props}
                 updateStation={ this.updateStation }
@@ -140,15 +130,8 @@ class App extends Component {
                 center={ this.state.center }
                 zoom={ this.state.zoom }
               />} />
-            <Route
-              path="/stations"
-              render={(props) => <Stations {...props}
-                stations={ this.state.stations }
-                currentStation={ this.state.station }
-              />} />
 
               </div>
-            <BottomNav />
           </div>
         </BrowserRouter>   
         </MuiThemeProvider>
