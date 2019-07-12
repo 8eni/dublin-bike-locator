@@ -42,6 +42,7 @@ class App extends Component {
       stations: [],
       station: ''
     }
+    this.isBike = true; // Add Pre-screen to decide this state
   }
 
   componentDidMount() {
@@ -125,12 +126,12 @@ class App extends Component {
             <Route
               path="/"
               render={(props) => <Map {...props}
+                isBike={ this.isBike }
                 updateStation={ this.updateStation }
                 stations={ this.state.stations }
                 center={ this.state.center }
                 zoom={ this.state.zoom }
               />} />
-
               </div>
           </div>
         </BrowserRouter>   

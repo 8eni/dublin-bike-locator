@@ -25,17 +25,17 @@ const useStyles = makeStyles(theme => ({
 
 export default function ButtonAppBar({ currentStation }) {
   const classes = useStyles();
-  const [alignment, setAlignment] = React.useState('left');
+  const [alignment, setAlignment] = React.useState('bike');
 
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
     console.log('align ', alignment)
   };
   const children = [
-    <ToggleButton key={1} value="left">
+    <ToggleButton key={1} value="bike">
       <DirectionsBikeIcon />
     </ToggleButton>,
-    <ToggleButton key={2} value="right">
+    <ToggleButton key={2} value="park">
       <LocalParkingIcon />
     </ToggleButton>,
   ];

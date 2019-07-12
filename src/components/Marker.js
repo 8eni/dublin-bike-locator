@@ -8,7 +8,9 @@ const styles = theme => ({
     width: '20px',
     height: '20px',
     background: '#64ffda',
-    borderRadius: '20px'
+    borderRadius: '20px',
+    lineHeight: '20px',
+    textAlign: 'center'
   }
 })
 class Marker extends Component {
@@ -19,13 +21,15 @@ class Marker extends Component {
   }
 
   handleClick() {
+    console.log(this.props.station);
+    
     return this.props.viewStation(this.props.station)
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, number } = this.props;
     return (
-      <div className={classes.root} onClick={ this.handleClick }></div>
+      <div className={classes.root} onClick={ this.handleClick }>{number}</div>
     )
   }
 }
