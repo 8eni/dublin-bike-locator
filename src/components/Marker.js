@@ -21,20 +21,17 @@ class Marker extends Component {
   constructor(props) {
     super();
     this.handleClick = this.handleClick.bind(this);
-    this.active = false;
   }
 
   handleClick() {
-    console.log(this.props.station);
     this.active = true;
-    
     return this.props.viewStation(this.props.station)
   }
 
   render() {
-    const { classes, number } = this.props;
+    const { classes, station, number } = this.props;
     return (
-      <div className={`${classes.root} ${this.active ? classes.active : ''}`} onClick={ this.handleClick }>{number}</div>
+      <div className={`${classes.root} ${station.active ? classes.active : ''}`} onClick={ this.handleClick }>{number}</div>
     )
   }
 }

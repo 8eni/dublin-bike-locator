@@ -68,7 +68,11 @@ class App extends Component {
   }
 
   updateStation(val) {
-    this.setState({ station: val })
+    const setActiveStation = this.state.stations.map(s => (val.number === s.number) ? (s.active = true, s) : (s.active = false, s))
+    this.setState({ 
+      station: val,
+      stations: setActiveStation
+    })
   }
 
   async getStations(lat, lng) {
@@ -89,7 +93,8 @@ class App extends Component {
 
   getClosest(stations) {
     const result = stations.sort((a,b) => (a.distance > b.distance) ? 1 : ((b.distance > a.distance) ? -1 : 0));
-    this.setState({ station: result[0]} )
+    result[0].active = true;
+    this.setState({ station: result[0] } )
     return result;
   }
 
