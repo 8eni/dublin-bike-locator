@@ -52,19 +52,34 @@ class App extends Component {
   getGeolocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(pos => {
-        this.getStations(
-          pos.coords.latitude, pos.coords.longitude
-          // 53.3442, -6.2400
-        )
         this.setState({
           center: {
             lat: pos.coords.latitude,
             lng: pos.coords.longitude
-            // lat: 53.3442 , lng: -6.2400
           }
-        });
+        }, () => this.getStations(this.state.center.lat, this.state.center.lng));
       });
+      this.watchGeoLocation();
+    } else {
+      // Set 'center' to city center
+      this.setState({
+        center: {
+          lat: 53.347316, lng: -6.259184
+        }
+      }, () => this.getStations(this.state.center.lat, this.state.center.lng));
+      
     }
+  }
+
+  watchGeoLocation() {
+    navigator.geolocation.watchPosition(pos => {
+      this.setState({
+        center: {
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude
+        }
+      });
+    })
   }
 
   updateStation(val) {

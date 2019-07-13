@@ -10,7 +10,8 @@ const styles = theme => ({
     background: '#64ffda',
     borderRadius: '20px',
     lineHeight: '20px',
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '-10px 0 0 -10px'
   },
   active: {
     background: 'red'
