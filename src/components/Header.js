@@ -9,10 +9,9 @@ import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
 import LocalParkingIcon from '@material-ui/icons/LocalParking';
 import NearMeIcon from '@material-ui/icons/NearMe';
 
-
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    minHeight: '64px',
     position: 'fixed',
     zIndex: 5,
     width: '100%',
@@ -21,6 +20,21 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  toolbar: {
+    minHeight: '64px',
+  },
+  toggle: {
+    background: theme.palette.secondary.main800,
+      '&.Mui-selected': {
+        background: theme.palette.primary.main,
+      '&:hover': {
+        background: theme.palette.primary.main,
+      }
+    },
+    '&:hover': {
+      background: theme.palette.secondary.main700
+    }
+  }
 }));
 
 export default function ButtonAppBar({ currentStation }) {
@@ -32,18 +46,18 @@ export default function ButtonAppBar({ currentStation }) {
     console.log('align ', alignment)
   };
   const children = [
-    <ToggleButton key={1} value="bike">
+    <ToggleButton className={classes.toggle} key={1} value="bike">
       <DirectionsBikeIcon />
     </ToggleButton>,
-    <ToggleButton key={2} value="park">
+    <ToggleButton className={classes.toggle} key={2} value="park">
       <LocalParkingIcon />
     </ToggleButton>,
   ];
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
+      <AppBar position="static" color="secondary">
+        <Toolbar className={classes.toolbar}>
           <Typography variant="h6" className={classes.title}>
             { currentStation.name } <NearMeIcon />{currentStation.distance}km
           </Typography>
