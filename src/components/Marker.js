@@ -14,7 +14,7 @@ const styles = theme => ({
     margin: '-10px 0 0 -10px'
   },
   active: {
-    background: 'red'
+    background: '#e74c3c'
   }
 })
 class Marker extends Component {
