@@ -31,19 +31,22 @@ const theme = createMuiTheme({
   },
 });
 class App extends Component {
+  
 
   constructor(){
     super();
     this.getStations = this.getStations.bind(this)
+    this.handleName = this.handleName.bind(this)
     this.updateStation = this.updateStation.bind(this)
     this.state = {
       center: { }, 
       zoom: 16,
       stations: [],
-      station: ''
+      station: '',
+      type: 'bike' // Add Pre-screen to decide this state
     }
-    this.isBike = true; // Add Pre-screen to decide this state
   }
+  
 
   componentDidMount() {
     this.getGeolocation();
@@ -138,19 +141,26 @@ class App extends Component {
       return dist;
     }
   }
-
+  
+  handleName(e, a) {
+    return this.state.type !== a && a !== null && this.setState({ type: a });
+  }
+  
   render() {
     if (this.state.stations.length) {
       return (
         <MuiThemeProvider theme={theme}>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <div id="wrapper">
-          <Header currentStation={ this.state.station } />
+          <Header 
+            currentStation={ this.state.station }
+            mapType={this.state.type}
+            setName={this.handleName} />
           <div className='main'>
             <Route
               path="/"
               render={(props) => <Map {...props}
-                isBike={ this.isBike }
+                mapType={ this.state.type }
                 updateStation={ this.updateStation }
                 stations={ this.state.stations }
                 center={ this.state.center }

@@ -37,14 +37,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ButtonAppBar({ currentStation }) {
+export default function ButtonAppBar({ currentStation, mapType, setName }) {
   const classes = useStyles();
-  const [alignment, setAlignment] = React.useState('bike');
 
-  const handleChange = (event, newAlignment) => {
-    setAlignment(newAlignment);
-    console.log('align ', alignment)
-  };
   const children = [
     <ToggleButton className={classes.toggle} key={1} value="bike">
       <DirectionsBikeIcon />
@@ -61,7 +56,7 @@ export default function ButtonAppBar({ currentStation }) {
           <Typography variant="h6" className={classes.title}>
             { currentStation.name } <NearMeIcon />{currentStation.distance}km
           </Typography>
-          <ToggleButtonGroup size="small" value={alignment} exclusive onChange={handleChange}>
+          <ToggleButtonGroup size="small" value={mapType} exclusive onChange={setName}>
                 {children}
               </ToggleButtonGroup>
         </Toolbar>
