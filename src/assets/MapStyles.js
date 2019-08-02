@@ -145,7 +145,7 @@ const MapStyles = {
           "elementType": "geometry",
           "stylers": [
             {
-              "color": "#424242"
+              "color": "#757575"
             }
           ]
         },
@@ -154,7 +154,7 @@ const MapStyles = {
           "elementType": "labels.text.fill",
           "stylers": [
             {
-              "color": "#9e9e9e"
+              "color": "#ffffff"
             }
           ]
         }

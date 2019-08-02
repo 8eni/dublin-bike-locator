@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const useStyles = withStyles(theme => ({
   root: {
     display: 'block',
-    width: '20px',
-    height: '20px',
-    background: '#64ffda',
-    borderRadius: '20px',
-    lineHeight: '20px',
+    width: '28px',
+    height: '28px',
+    background: theme.palette.secondary.main800,
+    color: 'white',
+    borderRadius: '28px',
+    lineHeight: '28px',
     textAlign: 'center',
-    margin: '-10px 0 0 -10px'
+    margin: '-10px 0 0 -10px',
+    fontSize: '14px'
   },
   active: {
-    background: '#e74c3c'
+    background: theme.palette.primary.main,
+    color: 'black'
   }
-})
-class Marker extends Component {
+}));
 
-  constructor(props) {
+class Marker extends Component {
+  constructor() {
     super();
     this.handleClick = this.handleClick.bind(this);
   }
@@ -28,7 +30,6 @@ class Marker extends Component {
     this.active = true;
     return this.props.viewStation(this.props.station)
   }
-
   render() {
     const { classes, station, number } = this.props;
     return (
@@ -37,8 +38,4 @@ class Marker extends Component {
   }
 }
 
-Marker.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(Marker);
+export default useStyles(Marker);

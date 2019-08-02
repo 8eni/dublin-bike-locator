@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ButtonAppBar({ currentStation, mapType, setName }) {
+export default ({ currentStation, mapType, setName }) => {
   const classes = useStyles();
 
   const children = [

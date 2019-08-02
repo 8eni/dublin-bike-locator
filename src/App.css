@@ -8,26 +8,6 @@
   }
 }
 
-.currentLocation {
-  /* margin:-11px 0 0 -11px; */
-  display: block;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  /* background: #010b0d; */
-  cursor: pointer;
-  box-shadow: 0 0 0 rgba(100, 255, 218, 0.4);
-  animation: pulse 2s infinite;
-}
-.currentLocation svg {
-  margin: -4px;
-  color: white;
-}
-
-.currentLocation:hover {
-  animation: none;
-}
-
 @-webkit-keyframes pulse {
   0% {
     -webkit-box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.4);

@@ -1,9 +1,8 @@
 import React from 'react';
-import NearMeIcon from '@material-ui/icons/NearMe';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
+import NearMeIcon from '@material-ui/icons/NearMe';
 
-const styles = () => ({
+const useStyles = withStyles(theme => ({
   root: {
     position: 'absolute',
     zIndex: 2,
@@ -18,13 +17,13 @@ const styles = () => ({
   svg: {
     fontSize: '21px'
   }
-})
-const CurrentStation = ({ classes, station }) =>
-  <div className={classes.root}>
-    <NearMeIcon className={classes.svg}/> { station.address } - { station.distance } km
-  </div>
+}));
 
-CurrentStation.protoTypes = {
-  classes: PropTypes.object.isRequired
+export default ({ station }) => {
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
+      <NearMeIcon className={classes.svg}/> { station.address } - { station.distance } km
+    </div>
+  )
 }
-export default withStyles(styles)(CurrentStation);
