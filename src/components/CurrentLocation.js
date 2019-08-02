@@ -11,6 +11,8 @@ const useStyles = makeStyles(theme => ({
 		cursor: 'pointer',
 		boxShadow: '0 0 0 rgba(100, 255, 218, 0.4)',
 		animation: 'pulse 2s infinite',
+
+		transition: 'width 2s',
 		'& svg': {
 			margin: '-4px',
 			color: theme.primary

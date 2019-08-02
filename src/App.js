@@ -85,6 +85,17 @@ class App extends Component {
 
   watchGeoLocation() {
     navigator.geolocation.watchPosition(pos => {
+      // let count = 0;
+      // setInterval(() => {
+      //   count = count + 0.0004;
+      //   console.log(count);
+      //   this.setState({
+      //     pan: {
+      //       lat: pos.coords.latitude+count,
+      //       lng: pos.coords.longitude
+      //     }
+      //   });
+      // }, 5000)
       this.setState({
         pan: {
           lat: pos.coords.latitude,

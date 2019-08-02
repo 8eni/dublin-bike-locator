@@ -27,11 +27,9 @@ class Map extends Component {
   }
 
   apiIsLoaded(map, maps, lat, lng) {
-    console.log(lat);
-    
+
     if (map) {
-      const latLng = new maps.LatLng(lat, lng); // Makes a latlng
-      // debugger
+      const latLng = new maps.LatLng(lat, lng) // Makes a latlng
       map.panTo(latLng);
     }
   };
@@ -50,8 +48,8 @@ class Map extends Component {
           onGoogleApiLoaded={({ map, maps }) => this.apiIsLoaded(map, maps, pan.lat, pan.lng)}
           >
           <CurrentLocation
-            lat={ center.lat }
-            lng={ center.lng } />
+            lat={ pan.lat }
+            lng={ pan.lng } />
           { stations.map((station, i) =>
             <Marker
               key={ i }
