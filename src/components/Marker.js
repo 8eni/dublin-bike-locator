@@ -12,7 +12,8 @@ const useStyles = withStyles(theme => ({
     lineHeight: '28px',
     textAlign: 'center',
     margin: '-10px 0 0 -10px',
-    fontSize: '14px'
+    fontSize: '13px',
+    fontWeight: 'bold'
   },
   active: {
     background: theme.palette.primary.main,

@@ -34,6 +34,9 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       background: theme.palette.secondary.main700
     }
+  },
+  smlFont: {
+    fontSize: '21px'
   }
 }));
 
@@ -53,8 +56,8 @@ export default ({ currentStation, mapType, setName }) => {
     <div className={classes.root}>
       <AppBar position="static" color="secondary">
         <Toolbar className={classes.toolbar}>
-          <Typography variant="h6" className={classes.title}>
-            { currentStation.name } <NearMeIcon />{currentStation.distance}km
+          <Typography variant="subtitle1" className={classes.title}>
+            { currentStation.name } <NearMeIcon className={classes.smlFont} />{currentStation.distance}km
           </Typography>
           <ToggleButtonGroup size="small" value={mapType} exclusive onChange={setName}>
                 {children}
