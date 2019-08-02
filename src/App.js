@@ -40,6 +40,7 @@ class App extends Component {
     this.updateStation = this.updateStation.bind(this)
     this.state = {
       center: { }, 
+      pan: { }, 
       zoom: 16,
       stations: [],
       station: '',
@@ -63,6 +64,10 @@ class App extends Component {
           center: {
             lat: pos.coords.latitude,
             lng: pos.coords.longitude
+          },
+          pan: {
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude
           }
         }, () => this.getStations(this.state.center.lat, this.state.center.lng));
       });
@@ -81,7 +86,7 @@ class App extends Component {
   watchGeoLocation() {
     navigator.geolocation.watchPosition(pos => {
       this.setState({
-        center: {
+        pan: {
           lat: pos.coords.latitude,
           lng: pos.coords.longitude
         }
@@ -164,6 +169,7 @@ class App extends Component {
                 updateStation={ this.updateStation }
                 stations={ this.state.stations }
                 center={ this.state.center }
+                pan={ this.state.pan }
                 zoom={ this.state.zoom }
               />} />
               </div>

@@ -26,15 +26,29 @@ class Map extends Component {
     this.props.updateStation(val);
   }
 
+  apiIsLoaded(map, maps, lat, lng) {
+    console.log(lat);
+    
+    if (map) {
+      const latLng = new maps.LatLng(lat, lng); // Makes a latlng
+      // debugger
+      map.panTo(latLng);
+    }
+  };
+ // https://github.com/google-map-react/google-map-react/issues/407
+ // https://stackoverflow.com/questions/52259634/reposition-the-center-of-the-map-when-the-location-changes
   render() {
-    const { center, zoom, stations, mapType } = this.props;
+    const { pan, center, zoom, stations, mapType } = this.props;
     return (
       <div>
         <GoogleMapReact
           bootstrapURLKeys={{ key: this.googleMapsApiKey }}
           center={ center }
           options={ MapStyles }
-          defaultZoom={ zoom }>
+          defaultZoom={ zoom }
+          yesIWantToUseGoogleMapApiInternals
+          onGoogleApiLoaded={({ map, maps }) => this.apiIsLoaded(map, maps, pan.lat, pan.lng)}
+          >
           <CurrentLocation
             lat={ center.lat }
             lng={ center.lng } />
